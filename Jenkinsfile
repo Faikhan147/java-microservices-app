@@ -7,41 +7,6 @@ pipeline {
     }
 
     stages {
-    
-
-        stage('Debug Git Changes') {
-            steps {
-                sh '''
-                echo "===== CURRENT COMMIT ====="
-                git rev-parse HEAD
-
-                echo "===== PREVIOUS COMMIT ====="
-                git rev-parse HEAD~1
-
-                echo "===== CHANGED FILES ====="
-                git diff --name-only HEAD~1 HEAD
-
-                echo "===== LAST COMMIT ====="
-                git show --name-only --oneline HEAD
-                '''
-            }
-        }
-
-        stage('Debug ChangeLog') {
-            steps {
-                script {
-                    for (changeSet in currentBuild.changeSets) {
-                        for (entry in changeSet.items) {
-                            echo "Commit: ${entry.commitId}"
-
-                            for (file in entry.affectedFiles) {
-                                echo "Changed File: ${file.path}"
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
 
         stage('user-service Build') {
