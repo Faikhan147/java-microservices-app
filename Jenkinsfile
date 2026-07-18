@@ -8,11 +8,6 @@ pipeline {
 
     stages {
     
-        stage('Git Clone') {
-            steps {
-                checkout scm
-            }
-        }
 
         stage('Debug Git Changes') {
             steps {
