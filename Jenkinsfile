@@ -32,6 +32,22 @@ pipeline {
             }
         }
 
+        stage('Debug ChangeLog') {
+            steps {
+                script {
+                    for (changeSet in currentBuild.changeSets) {
+                        for (entry in changeSet.items) {
+                            echo "Commit: ${entry.commitId}"
+
+                            for (file in entry.affectedFiles) {
+                                echo "Changed File: ${file.path}"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         stage('user-service Build') {
             when {
