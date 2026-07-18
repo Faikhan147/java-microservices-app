@@ -17,7 +17,8 @@ pipeline {
 
         stage('user-service Build') {
             when {
-                changeset "user-service/**"
+                changeset "user-service/**" {
+                }
             }
             steps {
                 dir('user-service')
@@ -27,7 +28,8 @@ pipeline {
 
         stage('order-service Build') {
             when {
-                changeset "order-service/**"
+                changeset "order-service/**" {
+                }
             }
             steps {
                 dir('order-service')
@@ -37,7 +39,8 @@ pipeline {
 
         stage('payment-service Build') {
             when {
-                changeset "payment-service/**"
+                changeset "payment-service/**" {
+                }
             }
             steps {
                 dir('payment-service')
