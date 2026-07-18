@@ -17,34 +17,34 @@ pipeline {
 
         stage('user-service Build') {
             when {
-                changeset "user-service/**" {
-                }
+                changeset "user-service/**"
             }
             steps {
-                dir('user-service')
+                dir('user-service') {
                     sh 'mvn clean package'
+                }
             }
         }
 
         stage('order-service Build') {
             when {
-                changeset "order-service/**" {
-                }
+                changeset "order-service/**"
             }
             steps {
-                dir('order-service')
+                dir('order-service') {
                     sh 'mvn clean package'
+                }
             }
         }
 
         stage('payment-service Build') {
             when {
-                changeset "payment-service/**" {
-                }
+                changeset "payment-service/**"
             }
             steps {
-                dir('payment-service')
+                dir('payment-service') {
                     sh 'mvn clean package'
+                }
             }
         }
     }
